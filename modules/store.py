@@ -5,6 +5,10 @@ import uuid
 from chunking import chunk_text  # Import chunking function
 from data import all_resume_texts # Import extracted resume texts
 
+__import__('pysqlite3')
+import sys
+sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
+
 chroma_client = chromadb.PersistentClient(path="./chroma_db")
 
 # Create a collection for resumes
