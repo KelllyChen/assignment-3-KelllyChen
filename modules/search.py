@@ -1,11 +1,13 @@
+__import__('pysqlite3')
+import sys
+sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
+
 import chromadb
 import numpy as np
 from sentence_transformers import SentenceTransformer
 
 
-__import__('pysqlite3')
-import sys
-sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
+
 
 # Load ChromaDB client
 chroma_client = chromadb.PersistentClient(path="./chroma_db")
