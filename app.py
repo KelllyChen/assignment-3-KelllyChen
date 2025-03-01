@@ -1,9 +1,11 @@
-import streamlit as st
-from transformers import pipeline
-from modules.search import semantic_search  # Assuming you have a semantic_search function
 __import__('pysqlite3')
 import sys
 sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
+
+import streamlit as st
+from transformers import pipeline
+from modules.search import semantic_search  # Assuming you have a semantic_search function
+
 
 # Load a local LLM (choose a smaller model if needed)
 generator = pipeline("summarization", model="facebook/bart-large-cnn", device=-1)
